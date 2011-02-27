@@ -1,1 +1,1 @@
-require 'ondas2'
+require 'ondas_in_cloud'

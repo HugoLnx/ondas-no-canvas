@@ -1,5 +1,4 @@
-aqui = File.dirname __FILE__
-
-require File.join(aqui,'ondas2')
+require 'ondas_in_cloud'
 
 Ondas2::Modelos::InfraE::App.iniciar
+
