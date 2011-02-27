@@ -1,6 +1,6 @@
-module Ondas2
+module OndasInCloud
 	module Modelos
-		module InfraE
+		module Infra
 			class OndaException < Exception
 				def mensagem_notificacao
 					case self.message

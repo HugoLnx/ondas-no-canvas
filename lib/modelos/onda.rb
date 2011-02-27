@@ -1,9 +1,9 @@
-module Ondas2
+module OndasInCloud
 	module Modelos
 		class Onda
 			def initialize(dados={})
 				encontrado_dado_com_letras = dados.values.any?{|dado| dado.is_a?(String) && dado.match(/[^0-9.]/)}
-				raise InfraE::OndaException, :ComLetras if encontrado_dado_com_letras
+				raise Infra::OndaException, :ComLetras if encontrado_dado_com_letras
 				inicializa_atributos_com dados
 				checa_se_e_possivel_definir_a_onda_com_os dados
 				calcula_propriedades
@@ -23,8 +23,8 @@ module Ondas2
 				num_dados += 1 if !dados[:velocidade].nil?
 				num_dados += 1 if !dados[:lambda].nil?
 				num_dados += 1 if !dados[:frequencia].nil? or !dados[:periodo].nil?
-				raise InfraE::OndaException,:SemAmplitude if dados[:amplitude].nil?
-				raise InfraE::OndaException,:FaltaDados if num_dados < 2
+				raise Infra::OndaException,:SemAmplitude if dados[:amplitude].nil?
+				raise Infra::OndaException,:FaltaDados if num_dados < 2
 			end
 		
 			def calcula_propriedades
@@ -36,8 +36,8 @@ module Ondas2
 			end
 		
 			def checa_vericidade_dos_valores
-				raise InfraE::OndaException, :FrequenciaPeriodoErro if @frequencia.eh_diferente? 1/@periodo
-				raise InfraE::OndaException, :VelocidadeLambdaFrequenciaErro if @velocidade.eh_diferente? @lambda * @frequencia
+				raise Infra::OndaException, :FrequenciaPeriodoErro if @frequencia.eh_diferente? 1/@periodo
+				raise Infra::OndaException, :VelocidadeLambdaFrequenciaErro if @velocidade.eh_diferente? @lambda * @frequencia
 			end
 		
 			def propriedades

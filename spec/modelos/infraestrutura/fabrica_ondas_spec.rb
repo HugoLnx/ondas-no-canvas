@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-module Ondas2
+module OndasInCloud
 	module Modelos
-		module InfraE
+		module Infra
 			describe 'Uma Fabrica de Ondas' do
 				it 'deveria ser instanciavel' do
 					lambda{FabricaOndas.new}.should_not raise_error
@@ -24,8 +24,8 @@ module Ondas2
 					end
 					
 					it 'deveria poder fabricar uma onda' do
-						Ondas2::Modelos::Onda = mock(:onda_class) if Ondas2::Modelos::Onda.nil?
-						onda_class = Ondas2::Modelos::Onda
+						OndasInCloud::Modelos::Onda = mock(:onda_class) if OndasInCloud::Modelos::Onda.nil?
+						onda_class = OndasInCloud::Modelos::Onda
 						onda = mock :onda, :class => onda_class
 						onda_class.stub!(:new).with(any_args).and_return(onda)
 						@fabrica.fabrica_onda_com(:amplitude => '50',
@@ -35,7 +35,6 @@ module Ondas2
 												  :periodo => ''
 						).should be_eql onda
 					end
-					
 				end
 			end
 		end

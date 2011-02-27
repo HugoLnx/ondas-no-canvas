@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-module Ondas2
+module OndasInCloud
 	module Modelos
-		module InfraE
+		module Infra
 			describe 'OndaException' do
 				context 'ao ser ativada com a mensagem :FaltaDados' do
 					before :all do
