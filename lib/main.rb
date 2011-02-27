@@ -1,4 +1,6 @@
+$LOAD_PATH << "./lib"
+require 'rubygems'
+require 'sinatra'
 require 'ondas_in_cloud'
 
-Ondas2::Modelos::InfraE::App.iniciar
-
+OndasInCloud::Modelos::Infra::Application.run
