@@ -1,4 +1,4 @@
-module OndasInCloud
+module OndasNoCanvas
 	module Modelos
 		module Infra
 			class FabricaOndas
@@ -9,7 +9,7 @@ module OndasInCloud
 					freq_val = txtfs[:frequencia].empty? ? nil : txtfs[:frequencia]
 					per_val = txtfs[:periodo].empty? ? nil : txtfs[:periodo]
 					
-					onda = OndasInCloud::Modelos::Onda.new :amplitude => amp_val,
+					onda = OndasNoCanvas::Modelos::Onda.new :amplitude => amp_val,
 													 :lambda => lam_val,
 													 :velocidade => vel_val,
 													 :frequencia => freq_val,

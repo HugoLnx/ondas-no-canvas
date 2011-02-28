@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module OndasInCloud
+module OndasNoCanvas
 	module Modelos
     describe Onda do
       it 'deveria ser instanciavel' do

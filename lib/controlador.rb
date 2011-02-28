@@ -1,11 +1,11 @@
-module OndasInCloud
+module OndasNoCanvas
   module Controlador
     get '/' do
       haml :index
     end
   
     post '/gera_onda' do
-      onda = OndasInCloud::Modelos::Onda.new params
+      onda = OndasNoCanvas::Modelos::Onda.new params
       @delay = 10
       @ys = onda.gerar_todos_os_ys :delay => @delay,
                                    :x_max => 500

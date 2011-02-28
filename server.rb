@@ -2,6 +2,6 @@ $LOAD_PATH << "./lib"
 require 'rubygems'
 require 'sinatra'
 require 'haml'
-require 'ondas_in_cloud'
+require 'ondas_no_canvas'
 
-OndasInCloud::Modelos::Infra::Application.run
+OndasNoCanvas::Modelos::Infra::Application.run

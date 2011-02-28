@@ -1,10 +1,10 @@
-module OndasInCloud
+module OndasNoCanvas
   module Modelos
     module Infra
       module Application
         extend self
         def run
-          include OndasInCloud::Controlador
+          include OndasNoCanvas::Controlador
         end
       end
     end

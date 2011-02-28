@@ -1,4 +1,4 @@
-module OndasInCloud
+module OndasNoCanvas
 	module Modelos
 		class Onda
 			def initialize(dados={})

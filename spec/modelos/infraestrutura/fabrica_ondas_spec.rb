@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module OndasInCloud
+module OndasNoCanvas
 	module Modelos
 		module Infra
 			describe 'Uma Fabrica de Ondas' do
@@ -24,8 +24,8 @@ module OndasInCloud
 					end
 					
 					it 'deveria poder fabricar uma onda' do
-						OndasInCloud::Modelos::Onda = mock(:onda_class) if OndasInCloud::Modelos::Onda.nil?
-						onda_class = OndasInCloud::Modelos::Onda
+						OndasNoCanvas::Modelos::Onda = mock(:onda_class) if OndasInCloud::Modelos::Onda.nil?
+						onda_class = OndasNoCanvas::Modelos::Onda
 						onda = mock :onda, :class => onda_class
 						onda_class.stub!(:new).with(any_args).and_return(onda)
 						@fabrica.fabrica_onda_com(:amplitude => '50',

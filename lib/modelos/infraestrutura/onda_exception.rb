@@ -1,4 +1,4 @@
-module OndasInCloud
+module OndasNoCanvas
 	module Modelos
 		module Infra
 			class OndaException < Exception

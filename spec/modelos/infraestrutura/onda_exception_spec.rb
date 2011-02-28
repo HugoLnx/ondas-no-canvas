@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module OndasInCloud
+module OndasNoCanvas
 	module Modelos
 		module Infra
 			describe 'OndaException' do
