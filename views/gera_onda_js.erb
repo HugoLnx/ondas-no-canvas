@@ -1,0 +1,11 @@
+var canvas = document.getElementById("canvas");
+var context = canvas.getContext("2d");
+
+context.beginPath();
+<% (@ys.size - 1).times do |x| %>
+  context.moveTo(<%=x%>,<%=@ys[x]+100%>);
+  context.lineTo(<%=x+1%>,<%=@ys[x+1]+100%>);
+<%end%>
+context.line_width = 5;
+context.strokeStyle = "#0000ff";
+context.stroke();

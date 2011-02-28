@@ -1,38 +1,40 @@
 %html
   %head
     %title Ondas Na Nuvem
-    %script(type='text/javascript' src='js/ajax.js')
-    :javascript
-          alert(123);
-          $(document).ready(function(){
-
-          });
+    %script(src='js/jquery.js' type='text/javascript')
+    %script(src='js/ajax.js' type='text/javascript')
   %body 
     %h1 Ondas Na Nuvem
-    %form(form='get')
-      %table
-        %tr
-          %th
-            Amplitude
-          %td
-            %input(name='amplitude')
-          %th
-            Frequencia
-          %td
-            %input(name='frequencia')
-        %tr
-          %th
-            Lambda
-          %td
-            %input(name='lambda')
-          %th
-            Periodo
-          %td
-            %input(name='periodo')
-        %tr
-          %th
-            Velocidade
-          %td
-            %input(name='velocidade')
-          %td
-            %input(type='submit' value='Gerar Onda' name='periodo')
+    %table
+      %tr
+        %td
+          %canvas(width="500" height="200" style="background-color: black" id="canvas")
+      %tr
+        %td
+          %form(form='get' id='gerar_onda_submit')
+            %table
+              %tr
+                %th
+                  Amplitude
+                %td
+                  %input(name='amplitude')
+                %th
+                  Frequencia
+                %td
+                  %input(name='frequencia')
+              %tr
+                %th
+                  Lambda
+                %td
+                  %input(name='lambda')
+                %th
+                  Periodo
+                %td
+                  %input(name='periodo')
+              %tr
+                %th
+                  Velocidade
+                %td
+                  %input(name='velocidade')
+                %td
+                  %input(type='submit' value='Gerar Onda')

@@ -1,4 +1,6 @@
-alert(123);
 $(document).ready(function() {
-  alert(123);
+  $('#gerar_onda_submit').submit(function() {
+    $.post("/gera_onda",$(this).serialize(),null,'script');
+    return false;
+  });
 });
