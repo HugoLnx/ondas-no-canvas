@@ -71,6 +71,17 @@ module OndasInCloud
             y.should be_eql @onda.y_quando(:tempo => tempo,:x => x)
           end
         end
+
+
+        it 'deveria gerar as suas coordenadas y de todos os tempos necessarios para gerar a animacao' do
+          delay = 100
+          x_max = 100
+          ys = @onda.gerar_todos_os_ys(:delay => 100,
+                                       :x_max => x_max)
+          ys.each_with_index do |ys_de_agora,tempo|
+            ys_de_agora.should be_eql @onda.gerar_ys(:tempo => tempo,:x_max => x_max)
+          end
+        end
       end
   
       context 'apos ser instanciada passando lambda = 20 e frequencia = 10' do

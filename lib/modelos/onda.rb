@@ -64,6 +64,19 @@ module OndasInCloud
 				end
 				ys
 			end
+
+      def gerar_todos_os_ys(args)
+        delay = args[:delay]
+        x_max = args[:x_max]
+        ys = []
+        tempo = 0
+        while tempo/1000.0 <= @periodo
+          ys << gerar_ys(:tempo => tempo/1000.0,
+                                :x_max => x_max)
+          tempo += delay
+        end
+        ys
+      end
 		end
 	end
 end
