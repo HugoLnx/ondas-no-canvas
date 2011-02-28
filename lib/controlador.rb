@@ -9,7 +9,7 @@ module OndasNoCanvas
       @delay = 10
       @ys = onda.gerar_todos_os_ys :delay => @delay,
                                    :x_max => 500
-      erb :gera_onda_js
+      erb :'gera_onda.js'
     end
   end
 end
