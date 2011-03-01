@@ -1,20 +1,55 @@
-var canvas = document.getElementById("canvas");
-var context = canvas.getContext("2d");
+var ysDeCadaFrame = <%=@ys%>;
+var delay = <%=@delay%>;
 
-context.line_width = 5;
-context.strokeStyle = "#0000ff";
-i = 0;
-ys = <%=@ys.compact%>;
-function desenhar_onda() {
-  context.clearRect(0,0,canvas.width,canvas.height);
-  var ys_de_agora = ys[i%ys.length]
-  context.beginPath();
-  for(var x = 0 ; x < ys_de_agora.length ; x++){
-    context.moveTo(x,ys_de_agora[x] + canvas.height/2);
-    context.lineTo(x+1,ys_de_agora[x+1] + canvas.height/2);
+Context = function(_canvas,lineWidth,strokeStyle) {
+  var canvas = _canvas;
+  var elemento = canvas.getContext("2d");
+  elemento.lineWidth = lineWidth;
+  elemento.strokeStyle = strokeStyle;
+
+  this.limpar = function(){
+    elemento.clearRect(0,0,canvas.width,canvas.height);
   }
-  context.stroke();
+  
+  this.tracarLinhaCentralizandoVerticalmente = function(ponto1,ponto2){
+    elemento.moveTo(ponto1.x,ponto1.y + canvas.height/2);
+    elemento.lineTo(ponto2.x,ponto2.y + canvas.height/2);
+  }
+
+  this.resetarTracos = function(){
+    elemento.beginPath();
+  }
+
+  this.riscarLinhas = function() {
+    elemento.stroke();
+  }
+
+}
+
+Ponto = function(_x,_y) {
+  this.x = _x;
+  this.y = _y;
+}
+
+var canvas = document.getElementById("canvas");
+var context = new Context(canvas,5,"#0000ff");
+
+i = 0;
+function animarOndaCom(ysDeCadaFrame) {
+  context.limpar();
+  var ysDoFrameAtual = ysDeCadaFrame[i%ysDeCadaFrame.length];
+  desenharFrameCom(ysDoFrameAtual);
   i++;
 }
 
-setInterval(desenhar_onda,<%=@delay%>);
+function desenharFrameCom(ys) {
+  context.resetarTracos();
+  for(var x = 0 ; x < ys.length ; x++) {
+    var ponto1 = new Ponto(x,ys[x]);
+    var ponto2 = new Ponto(x+1,ys[x+1]);
+    context.tracarLinhaCentralizandoVerticalmente(ponto1,ponto2);
+  }
+  context.riscarLinhas();
+}
+
+setInterval("animarOndaCom(ysDeCadaFrame)",delay);
