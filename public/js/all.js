@@ -56,14 +56,14 @@ AnimacaoParaOnda = function(_grafico,_ysDeCadaFrame,_milisegundosParaCadaFrame) 
   var grafico = _grafico;
   var ysDeCadaFrame = _ysDeCadaFrame;
   var milisegundosEntreCadaFrame = _milisegundosParaCadaFrame;
-  var frameCounter = 0;
   var prototipo = AnimacaoParaOnda.prototype;
+  if(prototipo.frameCounter == undefined) prototipo.frameCounter = 0;
 
   var desenharUmFrameAposOutro = function() {
     grafico.limpar();
-    var ysDoFrameAtual = ysDeCadaFrame[frameCounter%ysDeCadaFrame.length];
+    var ysDoFrameAtual = ysDeCadaFrame[prototipo.frameCounter%ysDeCadaFrame.length];
     desenharFrameCom(ysDoFrameAtual);
-    frameCounter++;
+    prototipo.frameCounter++;
   }
 
   clearInterval(prototipo.intervalo);
