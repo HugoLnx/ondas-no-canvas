@@ -78,7 +78,8 @@ module OndasNoCanvas
           x_max = 100
           ys = @onda.gerar_todos_os_ys(:delay => 100,
                                        :x_max => x_max)
-          ys.each_with_index do |ys_de_agora,tempo|
+          ys.each_with_index do |ys_de_agora,frame|
+            tempo = frame * delay/1000.0
             ys_de_agora.should be_eql @onda.gerar_ys(:tempo => tempo,:x_max => x_max)
           end
         end
