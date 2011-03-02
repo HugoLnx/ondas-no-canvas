@@ -20,7 +20,7 @@ class PacoteDeJavascript
   def cria_diretorios_para(path)
     File.dirname(path).split('/').inject('./') do |path_diretorio_antigo,diretorio_atual|
       path_do_diretorio_atual = File.join(path_diretorio_antigo,diretorio_atual)
-      Dir.mkdir(path_do_diretorio_atual) unless Dir.exist? path_do_diretorio_atual
+      Dir.mkdir(path_do_diretorio_atual) unless File.exist? path_do_diretorio_atual
       path_do_diretorio_atual
     end
   end
