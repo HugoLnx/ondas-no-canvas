@@ -1,77 +1,78 @@
-ContextBuilder = function() {
+GraficoBuilder = function() {
   var canvas;
   var espessuraDaLinha;
   var corDaLinha;
 
-  this.construirUmContexto = {
+  this.construirUmGrafico = {
     apartirDo: function(_canvas){ canvas = _canvas; return this },
     comLinhaDeEspessura: function(_espessuraDaLinha){ espessuraDaLinha=_espessuraDaLinha ; return this },
     comLinhaDeCor: function(_corDaLinha){ corDaLinha=_corDaLinha ; return this },
-    eRetorneIsso: function(){ return new Context(canvas,espessuraDaLinha,corDaLinha) }
+    eRetorneIsso: function(){ return new Grafico(canvas,espessuraDaLinha,corDaLinha) }
   }
 
-  this.construirUmContexto.e = this.construirUmContexto;
+  this.construirUmGrafico.e = this.construirUmGrafico;
   
 }
 
 AnimacaoParaOndaBuilder = function() {
-  var contexto;
+  var grafico;
   var ysDeCadaFrame;
   var millisegundosEntreCadaFrame;
 
   this.construirUmaAnimacaoParaOnda = {
-    no: function(_contexto){ contexto=_contexto ; return this },
+    no: function(_grafico){ grafico=_grafico ; return this },
     apartirDos: function(_ysDeCadaFrame){ ysDeCadaFrame=_ysDeCadaFrame ; return this },
     esperando: function(_milisegundosEntreCadaFrame){ milisegundosEntreCadaFrame=_milisegundosEntreCadaFrame ; return this },
-    eRetorneIsso: function(){ return new AnimacaoDaOnda(contexto,ysDeCadaFrame,milisegundosEntreCadaFrame) }
+    eRetorneIsso: function(){ return new AnimacaoParaOnda(grafico,ysDeCadaFrame,milisegundosEntreCadaFrame) }
   }
 }
 
-Context = function(_canvas,lineWidth,strokeStyle) {
+Grafico = function(_canvas,espessuraDaLinha,corDaLinha) {
   var canvas = _canvas;
-  var elemento = canvas.getContext("2d");
-  elemento.lineWidth = lineWidth;
-  elemento.strokeStyle = strokeStyle;
+  var contexto = canvas.getContext("2d");
+  contexto.lineWidth = espessuraDaLinha;
+  contexto.strokeStyle = corDaLinha;
 
   this.limpar = function(){
-    elemento.clearRect(0,0,canvas.width,canvas.height);
+    contexto.clearRect(0,0,canvas.width,canvas.height);
   }
   
   this.tracarCentralizado = function(traco){
-    elemento.moveTo(traco.ponto1.x,traco.ponto1.y + canvas.height/2);
-    elemento.lineTo(traco.ponto2.x,traco.ponto2.y + canvas.height/2);
+    contexto.moveTo(traco.ponto1.x,traco.ponto1.y + canvas.height/2);
+    contexto.lineTo(traco.ponto2.x,traco.ponto2.y + canvas.height/2);
   }
 
   this.resetarTracos = function(){
-    elemento.beginPath();
+    contexto.beginPath();
   }
 
   this.riscarTracos = function() {
-    elemento.stroke();
+    contexto.stroke();
   }
 
 }
 
-AnimacaoDaOnda = function(_context,_ysDeCadaFrame,_delay) {
-  var context = _context;
+AnimacaoParaOnda = function(_grafico,_ysDeCadaFrame,_milisegundosParaCadaFrame) {
+  var grafico = _grafico;
   var ysDeCadaFrame = _ysDeCadaFrame;
-  var delay = _delay;
+  var milisegundosEntreCadaFrame = _milisegundosParaCadaFrame;
   var frameCounter = 0;
+  var prototipo = AnimacaoParaOnda.prototype;
 
   var desenharUmFrameAposOutro = function() {
-    context.limpar();
+    grafico.limpar();
     var ysDoFrameAtual = ysDeCadaFrame[frameCounter%ysDeCadaFrame.length];
     desenharFrameCom(ysDoFrameAtual);
     frameCounter++;
   }
 
-  clearInterval(AnimacaoDaOnda.prototype.intervalo);
-  AnimacaoDaOnda.prototype.intervalo = setInterval(desenharUmFrameAposOutro,delay);
+  clearInterval(prototipo.intervalo);
+  prototipo.intervalo = setInterval(desenharUmFrameAposOutro,milisegundosEntreCadaFrame);
 
   var desenharFrameCom = function(ys) {
-    context.resetarTracos();
+    grafico.resetarTracos();
     tracarFrameBaseandoNos(ys);
-    context.riscarTracos();
+    grafico.riscarTracos();
   }
 
   var tracarFrameBaseandoNos = function(ys) {
@@ -79,7 +80,7 @@ AnimacaoDaOnda = function(_context,_ysDeCadaFrame,_delay) {
       var ponto1 = {x: x, y: y};
       var ponto2 = {x: proximoX, y: proximoY};
       var traco = {ponto1: ponto1, ponto2: ponto2};
-      context.tracarCentralizado(traco);
+      grafico.tracarCentralizado(traco);
     });
   }
 

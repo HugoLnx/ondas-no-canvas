@@ -1,18 +1,18 @@
 var ysDeCadaFrame = <%=@ys%>;
 var milisegundosEntreCadaFrame = <%=@delay%>;
 
-var contextBuilder = new ContextBuilder();
+var graficoBuilder = new GraficoBuilder();
 var animacaoBuilder = new AnimacaoParaOndaBuilder();
 
 var canvas = document.getElementById("canvas");
-var contexto = contextBuilder.construirUmContexto.
+var grafico = graficoBuilder.construirUmGrafico.
                              apartirDo(canvas).
                              comLinhaDeEspessura(5).
                              e.comLinhaDeCor("#0000ff").
                              eRetorneIsso();
 
 animacaoBuilder.construirUmaAnimacaoParaOnda.
-                no(contexto).
+                no(grafico).
                 apartirDos(ysDeCadaFrame).
                 esperando(milisegundosEntreCadaFrame).
                 eRetorneIsso();
