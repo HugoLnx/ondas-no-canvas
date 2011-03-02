@@ -6,3 +6,4 @@ TESTES*
 bin/*
 *.ico
 *.swp
+public/tmp/
