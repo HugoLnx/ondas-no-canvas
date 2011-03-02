@@ -24,7 +24,7 @@ module OndasNoCanvas
 					end
 					
 					it 'deveria poder fabricar uma onda' do
-						OndasNoCanvas::Modelos::Onda = mock(:onda_class) if OndasInCloud::Modelos::Onda.nil?
+						OndasNoCanvas::Modelos::Onda = mock(:onda_class) if OndasNoCanvas::Modelos::Onda.nil?
 						onda_class = OndasNoCanvas::Modelos::Onda
 						onda = mock :onda, :class => onda_class
 						onda_class.stub!(:new).with(any_args).and_return(onda)
