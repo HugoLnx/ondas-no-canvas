@@ -6,4 +6,4 @@ TESTES*
 bin/*
 *.ico
 *.swp
-public/tmp/
+public/tmp/pacote.todos.js
