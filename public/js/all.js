@@ -1,3 +1,32 @@
+ContextBuilder = function() {
+  var canvas;
+  var espessuraDaLinha;
+  var corDaLinha;
+
+  this.construirUmContexto = {
+    apartirDo: function(_canvas){ canvas = _canvas; return this },
+    comLinhaDeEspessura: function(_espessuraDaLinha){ espessuraDaLinha=_espessuraDaLinha ; return this },
+    comLinhaDeCor: function(_corDaLinha){ corDaLinha=_corDaLinha ; return this },
+    eRetorneIsso: function(){ return new Context(canvas,espessuraDaLinha,corDaLinha) }
+  }
+
+  this.construirUmContexto.e = this.construirUmContexto;
+  
+}
+
+AnimacaoParaOndaBuilder = function() {
+  var contexto;
+  var ysDeCadaFrame;
+  var millisegundosEntreCadaFrame;
+
+  this.construirUmaAnimacaoParaOnda = {
+    no: function(_contexto){ contexto=_contexto ; return this },
+    apartirDos: function(_ysDeCadaFrame){ ysDeCadaFrame=_ysDeCadaFrame ; return this },
+    esperando: function(_milisegundosEntreCadaFrame){ milisegundosEntreCadaFrame=_milisegundosEntreCadaFrame ; return this },
+    eRetorneIsso: function(){ return new AnimacaoDaOnda(contexto,ysDeCadaFrame,milisegundosEntreCadaFrame) }
+  }
+}
+
 Context = function(_canvas,lineWidth,strokeStyle) {
   var canvas = _canvas;
   var elemento = canvas.getContext("2d");
@@ -22,9 +51,6 @@ Context = function(_canvas,lineWidth,strokeStyle) {
   }
 
 }
-
-var canvas = document.getElementById("canvas");
-var context = new Context(canvas,5,"#0000ff");
 
 AnimacaoDaOnda = function(_context,_ysDeCadaFrame,_delay) {
   var context = _context;
