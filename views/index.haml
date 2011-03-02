@@ -1,41 +1,33 @@
-%html
-  %head
-    %title Ondas No Canvas
-  %body 
-    %h1 Ondas No Canvas
-    %table
-      %tr
-        %td
-          %canvas(width="500" height="200" style="background-color: black" id="canvas")
-      %tr
-        %td
-          %form(form='get' id='gerar_onda_submit')
-            %table
-              %tr
-                %th
-                  Amplitude
-                %td
-                  %input(name='amplitude' value='50')
-                %th
-                  Frequencia
-                %td
-                  %input(name='frequencia' value='2')
-              %tr
-                %th
-                  Lambda
-                %td
-                  %input(name='lambda' value='100')
-                %th
-                  Periodo
-                %td
-                  %input(name='periodo' value='0.5')
-              %tr
-                %th
-                  Velocidade
-                %td
-                  %input(name='velocidade' value='200')
-                %td
-                  %input(type='submit' value='Gerar Onda')
-  %script(src='js/jquery.js' type='text/javascript')
-  %script(src='js/ajax.js' type='text/javascript')
-  %script(src='js/animacao.js' type='text/javascript')
+%table
+  %tr
+    %td
+      %canvas(width="500" height="200" style="background-color: black" id="canvas")
+  %tr
+    %td
+      %form(form='get' id='gerar_onda_submit')
+        %table
+          %tr
+            %th
+              Amplitude
+            %td
+              %input(name='amplitude' value='50')
+            %th
+              Frequencia
+            %td
+              %input(name='frequencia' value='2')
+          %tr
+            %th
+              Lambda
+            %td
+              %input(name='lambda' value='100')
+            %th
+              Periodo
+            %td
+              %input(name='periodo' value='0.5')
+          %tr
+            %th
+              Velocidade
+            %td
+              %input(name='velocidade' value='200')
+            %td
+              %input(type='submit' value='Gerar Onda')
