@@ -1,0 +1,63 @@
+table {
+  border-collapse: collapse;
+}
+
+#titulo {
+  -moz-border-bottom-left-radius: 25px;
+  -moz-border-top-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 25px;
+  -webkit-border-top-left-radius: 5px;
+  background-image: url('/images/fundo_titulo.png');
+  background-repeat: repeat-y;
+  padding-left: 20px; /*Abaixar o Icone*/
+}
+
+#canvas {
+  width: 100%;
+  height: 200;
+  background-color: white;
+  border: 3px solid #559;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+#formulario_onda {
+  padding: 0px;
+}
+
+#creditos {
+  border: 5px solid #99f;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  background-color: rgba(200,200,255,0.5);
+  padding: 10px;
+}
+
+.label {
+  padding: 1px;
+  border: 5px solid #99f;
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+}
+
+.campo {
+  padding: 1px;
+  border: 3px solid #99f;
+  -moz-border-top-right-radius: 10px;
+  -moz-border-bottom-right-radius: 10px;
+  -moz-border-top-left-radius: 3px;
+  -moz-border-bottom-left-radius: 3px;
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+}
+
+#erro {
+  display: none;
+  color: #900;
+  font-weight: bolder;
+  border-top: 1px solid red;
+  border-bottom: 3px solid red;
+  background-color: rgba(200,0,0,0.5);
+}

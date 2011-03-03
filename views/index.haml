@@ -1,33 +1,28 @@
 %table
   %tr
     %td
-      %canvas(width="500" height="200" style="background-color: black" id="canvas")
+      %canvas#canvas
   %tr
     %td
       %form(form='get' id='gerar_onda_submit')
         %table
           %tr
-            %th
-              Amplitude
+            %th Amplitude
             %td
-              %input(name='amplitude' value='50' tabindex='1')
-            %th
-              Frequencia
+              %input.campo(name='amplitude' value='50' tabindex='1')
+            %th Frequencia
             %td
-              %input(name='frequencia' value='2' tabindex='4')
+              %input.campo(name='frequencia' value='2' tabindex='4')
           %tr
-            %th
-              Lambda
+            %th Lambda
             %td
-              %input(name='lambda' value='100' tabindex='2')
-            %th
-              Periodo
+              %input.campo(name='lambda' value='100' tabindex='2')
+            %th Periodo
             %td
-              %input(name='periodo' value='0.5' tabindex='5')
+              %input.campo(name='periodo' value='0.5' tabindex='5')
           %tr
-            %th
-              Velocidade
+            %th Velocidade
             %td
-              %input(name='velocidade' value='200' tabindex='3')
+              %input.campo(name='velocidade' value='200' tabindex='3')
             %td
               %input(type='submit' value='Gerar Onda' tabindex='6')
