@@ -2,6 +2,7 @@ module OndasNoCanvas
 	module Modelos
 		class Onda
 			def initialize(dados={})
+        dados.delete_if{|key,valor| valor == ""}
 				encontrado_dado_com_letras = dados.values.any?{|dado| dado.is_a?(String) && dado.match(/[^0-9.]/)}
 				raise Infra::OndaException, :ComLetras if encontrado_dado_com_letras
 				inicializa_atributos_com dados

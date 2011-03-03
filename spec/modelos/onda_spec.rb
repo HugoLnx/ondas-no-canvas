@@ -207,6 +207,15 @@ module OndasNoCanvas
                     :periodo => 0.1
         }.should raise_error Infra::OndaException,:SemAmplitude
       end
+      
+      it 'deveria considerar strings vazias como campos nulos' do
+        lambda{@onda = Onda.new :lambda => 20, 
+                    :velocidade => 200,
+                    :frequencia => 10,
+                    :periodo => 0.1,
+                    :amplitude => ""
+        }.should raise_error Infra::OndaException,:SemAmplitude
+      end
   
       it 'deveria lancar uma OndaException com a mensagem :ComLetras ao ser instanciada passando o lambda com letras' do
         lambda{@onda = Onda.new	:lambda => '20as'
@@ -236,7 +245,7 @@ module OndasNoCanvas
                     :periodo => 1234
         }.should raise_error Infra::OndaException, :FrequenciaPeriodoErro
       end
-  
+
       it 'deveria lancar uma OndaException com a mensagem :VelocidadeLambdaFrequenciaErro ao ser instanciada passando velocidade, lambda e frequencia invalidos' do
         lambda{@onda = Onda.new :amplitude => 50,
                     :lambda => 20, 
