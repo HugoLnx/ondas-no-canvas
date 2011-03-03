@@ -2,6 +2,11 @@ $("#erro").hide();
 
 var ysDeCadaFrame = <%=@ys%>;
 var milisegundosEntreCadaFrame = <%=@delay%>;
+var onda = <%=@propriedades%>;
+
+$('.campo').toArray().forEach(function(campo){
+  if(campo.value == "") campo.value = onda[campo.id];
+});
 
 var graficoBuilder = new GraficoBuilder();
 var animacaoBuilder = new AnimacaoParaOndaBuilder();

@@ -1,3 +1,4 @@
+require 'json'
 module OndasNoCanvas
   module Controlador
     get '/' do
@@ -10,6 +11,7 @@ module OndasNoCanvas
         @delay = 10
         @ys = onda.gerar_todos_os_ys :delay => @delay,
                                      :x_max => 500
+        @propriedades = onda.propriedades.to_json;
         erb :'gera_onda.js'
       rescue OndasNoCanvas::Modelos::Infra::OndaException => exception
         @mensagem_de_erro = exception.mensagem_notificacao
