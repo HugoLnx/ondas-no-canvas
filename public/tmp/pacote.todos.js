@@ -20,6 +20,15 @@ $(document).ready(function() {
     return false;
   });
 });
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-21805549-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
 AnimacaoParaOnda = function(_grafico,_ysDeCadaFrame,_milisegundosParaCadaFrame) {
   var grafico = _grafico;
   var ysDeCadaFrame = _ysDeCadaFrame;
