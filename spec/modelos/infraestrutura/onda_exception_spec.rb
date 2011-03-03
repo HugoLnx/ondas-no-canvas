@@ -53,6 +53,16 @@ module OndasNoCanvas
 						@erro.mensagem_notificacao.should be_eql 'A velocidade deve ser igual a lambda * frequencia.'
 					end
 				end
+
+				context 'ao ser ativada com a mensagem :CampoZerado' do
+					before :all do
+						@erro = OndaException.new :CampoZerado
+					end
+					
+					it 'deveria poder retornar uma mensagem de notificacao adequada' do
+						@erro.mensagem_notificacao.should be_eql 'Somente a amplitude pode ter valor igual a 0.'
+					end
+				end
 			end
 		end
 	end

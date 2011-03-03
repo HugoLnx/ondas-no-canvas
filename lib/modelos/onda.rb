@@ -3,10 +3,10 @@ module OndasNoCanvas
 		class Onda
 			def initialize(dados={})
         dados.delete_if{|key,valor| valor == ""}
-				encontrado_dado_com_letras = dados.values.any?{|dado| dado.is_a?(String) && dado.match(/[^0-9.]/)}
-				raise Infra::OndaException, :ComLetras if encontrado_dado_com_letras
+        checa_se_foram_passadas_letras_nos dados
+				checa_se_faltam_valores_nos dados
 				inicializa_atributos_com dados
-				checa_se_e_possivel_definir_a_onda_com_os dados
+        checa_se_existem_atributos_zerados
 				calcula_propriedades
 				checa_vericidade_dos_valores
 			end
@@ -18,8 +18,13 @@ module OndasNoCanvas
 				@frequencia = dados[:frequencia].to_f unless dados[:frequencia].nil?
 				@periodo = dados[:periodo].to_f unless dados[:periodo].nil?
 			end
+
+      def checa_se_foram_passadas_letras_nos(dados)
+				encontrado_dado_com_letras = dados.values.any?{|dado| dado.is_a?(String) && dado.match(/[^0-9.]/)}
+				raise Infra::OndaException, :ComLetras if encontrado_dado_com_letras
+      end
 		
-			def checa_se_e_possivel_definir_a_onda_com_os(dados)
+			def checa_se_faltam_valores_nos(dados)
 				num_dados = 0
 				num_dados += 1 if !dados[:velocidade].nil?
 				num_dados += 1 if !dados[:lambda].nil?
@@ -27,6 +32,12 @@ module OndasNoCanvas
 				raise Infra::OndaException,:SemAmplitude if dados[:amplitude].nil?
 				raise Infra::OndaException,:FaltaDados if num_dados < 2
 			end
+
+      def checa_se_existem_atributos_zerados
+        propriedades = self.propriedades
+        propriedades.delete :amplitude
+        raise Infra::OndaException, :CampoZerado if propriedades.values.any?{|valor| valor == 0.0}
+      end
 		
 			def calcula_propriedades
 				@frequencia = 1/@periodo if !@periodo.nil? and @frequencia.nil?

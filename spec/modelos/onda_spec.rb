@@ -217,26 +217,21 @@ module OndasNoCanvas
         }.should raise_error Infra::OndaException,:SemAmplitude
       end
   
-      it 'deveria lancar uma OndaException com a mensagem :ComLetras ao ser instanciada passando o lambda com letras' do
-        lambda{@onda = Onda.new	:lambda => '20as'
-        }.should raise_error Infra::OndaException,:ComLetras
+      it 'deveria lancar uma OndaException com a mensagem :ComLetras quando um campo for preenchido com letras' do
+        lambda{Onda.new	:lambda => '20as'}.should raise_error Infra::OndaException,:ComLetras
+        lambda{Onda.new	:velocidade => '20as'}.should raise_error Infra::OndaException,:ComLetras
+        lambda{Onda.new	:frequencia => '20as'}.should raise_error Infra::OndaException,:ComLetras
+        lambda{Onda.new	:periodo => '20as'}.should raise_error Infra::OndaException,:ComLetras
+        lambda{Onda.new	:amplitude => '20as'}.should raise_error Infra::OndaException,:ComLetras
       end
-  
-      it 'deveria lancar uma OndaException com a mensagem :ComLetras ao ser instanciada passando a velocidade com letras' do
-        lambda{@onda = Onda.new :velocidade => '200asdf'
-        }.should raise_error Infra::OndaException,:ComLetras
+
+      it 'deveria lancar uma OndaException com a mensagem :CampoZerado quando um campo que nao a amplitude for preenchido com zero' do
+        lambda{Support::OndaFactory.build :lambda => 0     }.should raise_error Infra::OndaException,:CampoZerado
+        lambda{Support::OndaFactory.build :velocidade => 0 }.should raise_error Infra::OndaException,:CampoZerado
+        lambda{Support::OndaFactory.build :frequencia => 0 }.should raise_error Infra::OndaException,:CampoZerado
+        lambda{Support::OndaFactory.build :periodo => 0    }.should raise_error Infra::OndaException,:CampoZerado
       end
-  
-      it 'deveria lancar uma OndaException com a mensagem :ComLetras ao ser instanciada passando a frequencia com letras' do
-        lambda{@onda = Onda.new :frequencia => '10asd'
-        }.should raise_error Infra::OndaException,:ComLetras
-      end
-  
-      it 'deveria lancar uma OndaException com a mensagem :ComLetras ao ser instanciada passando o periodo com letras' do
-        lambda{@onda = Onda.new :periodo => '0.asdf1'
-        }.should raise_error Infra::OndaException,:ComLetras
-      end
-  
+
       it 'deveria lancar uma OndaException com a mensagem :FrequenciaPeriodoErro ao ser instanciada passando frequencia e periodo invalidos' do
         lambda{@onda = Onda.new :amplitude => 50,
                     :lambda => 20, 
