@@ -27,15 +27,21 @@ AnimacaoParaOnda = function(_grafico,_ysDeCadaFrame,_milisegundosParaCadaFrame) 
   var prototipo = AnimacaoParaOnda.prototype;
   if(prototipo.frameCounter == undefined) prototipo.frameCounter = 0;
 
+  this.iniciar = function() {
+    prototipo.intervalo = setInterval(desenharUmFrameAposOutro,milisegundosEntreCadaFrame);
+  }
+
+  this.destruir = function()  {
+    clearInterval(prototipo.intervalo);
+    grafico.limpar();
+  }
+
   var desenharUmFrameAposOutro = function() {
     grafico.limpar();
     var ysDoFrameAtual = ysDeCadaFrame[prototipo.frameCounter%ysDeCadaFrame.length];
     desenharFrameCom(ysDoFrameAtual);
     prototipo.frameCounter++;
   }
-
-  clearInterval(prototipo.intervalo);
-  prototipo.intervalo = setInterval(desenharUmFrameAposOutro,milisegundosEntreCadaFrame);
 
   var desenharFrameCom = function(ys) {
     grafico.resetarTracos();

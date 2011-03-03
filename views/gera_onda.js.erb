@@ -13,8 +13,14 @@ var grafico = graficoBuilder.construirUmGrafico.
                              e.comLinhaDeCor("#0000ff").
                              eRetorneIsso();
 
-animacaoBuilder.construirUmaAnimacaoParaOnda.
-                no(grafico).
-                apartirDos(ysDeCadaFrame).
-                esperando(milisegundosEntreCadaFrame).
-                eRetorneIsso();
+var animacaoAtual;
+
+if(animacaoAtual != undefined) animacaoAtual.destruir();
+
+animacaoAtual = animacaoBuilder.construirUmaAnimacaoParaOnda.
+                                no(grafico).
+                                apartirDos(ysDeCadaFrame).
+                                esperando(milisegundosEntreCadaFrame).
+                                eRetorneIsso();
+
+animacaoAtual.iniciar();
