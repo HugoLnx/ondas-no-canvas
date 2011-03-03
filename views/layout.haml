@@ -7,6 +7,9 @@
       %tr
         %td
           = yield
+          %p(id="erro" style="display: none")
+            <b style="color: #900">Erro:</b>
+            %span(id="mensagem_de_erro") 
         %td(valign="top")
           %b Autor: 
           Hugo Roque (a.k.a HugoLnx)
@@ -15,11 +18,11 @@
           hugo.roque@caelum.com.br
           %br
           %b Twitter: 
-          %a(href="http://twitter.com/hugolnx") http://twitter.com/hugolnx
+          %a(href="http://twitter.com/hugolnx" tabindex='-1') http://twitter.com/hugolnx
           %br
           %b Blog: 
-          %a(href="http://hugolnx.wordpress.com") http://hugolnx.wordpress.com
+          %a(href="http://hugolnx.wordpress.com" tabindex='-1') http://hugolnx.wordpress.com
           %br
           %b Codigo Fonte em:
-          %a(href="https://github.com/HugoLnx/ondas-no-canvas") https://github.com/HugoLnx/ondas-no-canvas
+          %a(href="https://github.com/HugoLnx/ondas-no-canvas" tabindex='-1') https://github.com/HugoLnx/ondas-no-canvas
   %script(src='tmp/pacote.todos.js' type='text/javascript')
