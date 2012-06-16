@@ -3,32 +3,11 @@
     %link(rel='stylesheet' type='text/css' href='css/style.css')
     %title Ondas No Canvas
   %body
-    %h1#titulo 
+    %div#header 
       %img(src="/images/ondas2_48x48.png")
-      Ondas No Canvas
-    %table(cellpadding="10")
-      %tr
-        %td#formulario_onda
-          = yield
-        %td(valign="top")
-          %center
-            %span#logo
-              %img(src="/images/LnxLogo123x123.png")
-          %div#creditos
-            %b Autor: 
-            Hugo Roque (a.k.a HugoLnx)
-            %br
-            %b Email: 
-            hugo.roque@caelum.com.br
-            %br
-            %b Twitter: 
-            %a(href="http://twitter.com/hugolnx" tabindex='-1') http://twitter.com/hugolnx
-            %br
-            %b Blog: 
-            %a(href="http://hugolnx.com" tabindex='-1') http://hugolnx.com
-            %br
-            %b Codigo Fonte em:
-            %a(href="https://github.com/HugoLnx/ondas-no-canvas" tabindex='-1') https://github.com/HugoLnx/ondas-no-canvas
+      %h1#titulo Ondas No Canvas
+      %a#subtitulo(href="https://github.com/HugoLnx/ondas-no-canvas" tabindex='-1') https://github.com/HugoLnx/ondas-no-canvas
+    = yield
     %p#erro
       Erro:
       %span#mensagem_de_erro

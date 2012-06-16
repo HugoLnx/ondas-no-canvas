@@ -2,7 +2,7 @@ table {
   border-collapse: collapse;
 }
 
-#titulo {
+#header {
   -moz-border-bottom-left-radius: 25px;
   -moz-border-top-left-radius: 5px;
   -webkit-border-bottom-left-radius: 25px;
@@ -10,6 +10,16 @@ table {
   background-image: url('/images/fundo_titulo.png');
   background-repeat: repeat-y;
   padding-left: 20px; /*Abaixar o Icone*/
+	margin-bottom: 10px;
+}
+
+#titulo {
+	display: inline;
+}
+
+#subtitulo {
+	display: block;
+	font-size: 13px;
 }
 
 #canvas {
