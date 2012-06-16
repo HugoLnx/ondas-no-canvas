@@ -16,4 +16,4 @@ este sera desenvolvido utilizando...
 * _Nome:_ Hugo Roque
 * _Email:_ hugo.roque@caelum.com.br
 * _Twitter:_ http://twitter.com/hugolnx
-*	_Blog:_ http://hugolnx.wordpress.com/
+*	_Blog:_ http://hugolnx.com/
